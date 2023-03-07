@@ -1,0 +1,198 @@
+.paginationStyle {
+    padding-top: 4px;
+  }
+
+  .paintings a {
+    color: #42b983;
+  }
+  .paintingsContainer {
+    font-size: 14px !important;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0.03em;
+    line-height: 1.6em;
+    background-color: white;
+  }
+  
+  .paintings h5 {
+    font-weight: 700;
+    font-size: 14px !important;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0.03em;
+    line-height: 1.5em;
+  }
+  
+  .individualMainContent {
+    display: grid;
+    grid-template-columns: 60% 38%;
+    grid-gap: 2%;
+  }
+  
+  .paintersImage {
+    padding: 2.5em;
+  }
+  
+  .paintersImage .bwg_slideshow_play_pause {
+    display: none;
+  }
+  
+  .paintersImage iframe {
+    width: 80%;
+  }
+  
+  /* .painters-image img {
+      width: 65% !important;
+  } */
+  
+  .paginationLinks_col1 a:first-of-type,
+  .pagination-links_col2,
+  .pagination-links_col3 a:last-child {
+    display: none;
+  }
+  
+  .painters-description {
+    padding: 4.5em;
+    border-left: 2px solid darkgray;
+  }
+  
+  .painters-description ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1em;
+    text-align: justify;
+  }
+  
+  .painters-description .description {
+    display: inline-flex;
+    align-items: baseline;
+    column-gap: 0.5em;
+    color: Black;
+  }
+  
+  .painters-description li:last-child .description {
+    display: block;
+  }
+  
+  .paintings li {
+    list-style: none;
+  }
+  
+  /* Paintings Listing Page*/
+  .paintingsMainContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+    column-gap: 1em;
+    row-gap: 1em;
+  }
+  
+  .paintingsCard {
+    position: relative;
+    height: 268px;
+  }
+  
+  .paintingsCard .paintingsFeaturedImage img {
+    height: 235px;
+    width: 100%;
+    max-height: 235px;
+  }
+  
+  .paintingsCard .paintingsPainterImg {
+    position: absolute;
+    width: 20%;
+    top: 1em;
+    right: 1em;
+    border: 3px solid white;
+  }
+  
+  .paintingsCard h2.entryTitle {
+    background: lightgray;
+    padding: 0.5em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .paintingsCard h2.entryTitle a {
+    color: black;
+  }
+  
+  .paintingsMainHeader {
+    text-align: center;
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+  }
+  
+  .paintingsMainHeader p {
+    font-size: 16px;
+    color: darkgray;
+    line-height: 2em;
+  }
+  
+  .angleDown {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    #bwg_container1_0 #bwg_container2_0 .bwg_image_browser_image_0 {
+      max-width: 100% !important;
+    }
+  
+    #bwg_container1_0 #bwg_container2_0 .image_browser_images_conteiner_0 {
+      padding: 0 !important;
+    }
+  
+    .painters-image {
+      max-height: 70vh;
+      width: 100%;
+    }
+  
+    .painters-image img {
+      width: 100% !important;
+    }
+  
+    .painters-image {
+      padding: 0 !important;
+    }
+  
+    .individual-main-content {
+      grid-template-rows: auto;
+      grid-template-columns: none !important;
+    }
+  
+    .painters-image iframe {
+      width: 100%;
+    }
+  
+    .angle-down {
+      display: inline-block;
+      position: relative;
+      border-bottom: 1px solid darkgray;
+      margin-bottom: -30px;
+    }
+  
+    .fa.fa-angle-down {
+      display: inline-block;
+      background: darkgray;
+      width: 60px;
+      height: 60px;
+      font-size: 60px;
+      text-align: center;
+      border-radius: 30px;
+      color: white;
+      margin: 0 auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      position: absolute;
+    }
+  
+    .painters-description {
+      border-left: 0;
+    }
+  }
