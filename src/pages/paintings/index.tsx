@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { fetchData, ResponseData } from '../api/fetch';
 import styles from './Paintings.module.css';
+import Link from 'next/link';
 
 
+interface Props {
+  child: string;
+}
 
-interface Props {}
-function MyComponent(props: Props) {
+function Paintings({ child }: Props) {
   const [data, setData] = useState<ResponseData | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const BASE_URL = 'https://beta.ruralindiaonline.org/api';
@@ -15,7 +18,7 @@ function MyComponent(props: Props) {
       try {
         const data = await fetchData();
         setData(data);
-      } catch (error) {
+      } catch (error:any) {
         setError(error);
       }
     };
@@ -37,7 +40,7 @@ function MyComponent(props: Props) {
       {data.data.map((item) => (
         <div key={item.id} className={styles.paintingsCard}>
           <div className={styles.paintingsFeaturedImage}>
-            <a>
+          <Link href={`/paintings/${item.id}`}>
               <img
                 src={BASE_URL+item.attributes.Painting.data.attributes.formats.small.url}
                 className="attachment-medium size-medium wp-post-image"
@@ -47,7 +50,7 @@ function MyComponent(props: Props) {
                 decoding="async"
                 loading="lazy"
               />
-            </a>
+            </Link>
 
           </div>
           <a>
@@ -61,13 +64,6 @@ function MyComponent(props: Props) {
               <a rel="bookmark">{item.attributes.Name}</a>
             </h2>
           </div>
-          {/* <h1>{item.attributes.Title}</h1>
-          <p>{item.attributes.Name}</p>
-          <p>{item.attributes.createdAt}</p>
-          <p>{item.attributes.Painting.data.attributes.name}</p>
-          <p>{item.attributes.Painting.data.attributes.formats.small.name}</p>
-          <p>{item.attributes.Painting.data.attributes.formats.thumbnail.name}</p>
-          <a href={item.attributes.VideoLink}>Video</a> */}
         </div>
 
       ))}
@@ -75,4 +71,4 @@ function MyComponent(props: Props) {
   );
 }
 
-export default MyComponent;
+export default Paintings;
