@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
+import styles from './Paintings.module.css';
 
 interface Child {
   
@@ -19,6 +20,7 @@ interface Child {
       ProjectTeacher: string,
       Translation: string,
       VideoLink: string,
+      VideoID: string,
       Painting: {
         data: {
           id: number,
@@ -46,15 +48,13 @@ interface Child {
 
 type ChildObjectPropsType = {child : Child | null; error : Error | null }
 const BASE_URL = 'https://beta.ruralindiaonline.org/api';
+const VIDEOLINK1 = 'https://img.youtube.com/vi/'
+const VIDEOLINK2 = '/0.jpg'
 
 export const getServerSideProps: GetServerSideProps = async (ctx: any) =>{
     const props:ChildObjectPropsType = {child:null, error:null}
       try {
-        const response = await axios.get<{data: Child}>(BASE_URL+`/api/childrens-paintings/${ctx.query.child}?populate=deep`, { 
-                                headers: { 
-                                    Authorization: 'Bearer e6cac262860592af3ab95de2c732f124f6d0d70c67882ab3864e6a457489cb1ad252fce7848c46f8d775ad03fd3fb9652cfcf989dfb761658af7d97f1de144eeb7f5fb4ab9ec6e5fbc4137d74f14f29fcca90b7cec578ee0b58df9a0147941586e9626b6e007d0710140beed7dd9a2664807fb7077efa3d591b0253424d49f31' 
-                                } 
-                            });
+        const response = await axios.get<{data: Child}>(BASE_URL+`/api/childrens-paintings/${ctx.query.child}?populate=deep`);
         props.child = response.data?.data;
       } catch (error:any) {
         props.error=error.message;
@@ -76,12 +76,108 @@ function ChildPage({child, error}:ChildObjectPropsType) {
 
   return (
     <div>
-      <div>{child.attributes.Name}</div>
-      <img
-      src={BASE_URL+child.attributes.Painting.data.attributes.url}
-      />
+      <div className={styles.imageContainer}>
+        <div className={styles.imageContent}>
+          <div className={styles.imageSection}>
+            <div className={styles.mainImage}>
+              <img
+                src={BASE_URL+child.attributes.Painting.data.attributes.url}
+              />
+            </div>
+            <div className={styles.slideImage}>
+              <div className={styles.img}>
+                <img
+                  src={BASE_URL+child.attributes.Painting.data.attributes.formats.thumbnail.url}
+                />
+              </div>
+              <div className={styles.videoThumbnail}>
+                <img src={VIDEOLINK1+child.attributes.VideoID+VIDEOLINK2} 
+                />
+              </div>
+            </div>
+          </div>
+          <div className={styles.paintersDescription}>
+            <ul className={styles.description__ul}>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>Name: </b></h5>
+                {child.attributes.Name}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>Age: </b></h5>
+                {child.attributes.Age}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>Class: </b></h5>
+                {child.attributes.Class}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>School: </b></h5>
+                {child.attributes.School}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>Block: </b></h5>
+                {child.attributes.Block}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>District: </b></h5>
+                {child.attributes.District}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>State: </b></h5>
+                {child.attributes.State}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>Tribe: </b></h5>
+                {child.attributes.Tribe}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>Medium: </b></h5>
+                {child.attributes.Medium}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>Date: </b></h5>
+                {child.attributes.Year}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                <h5 className={styles.description__h5}><b>Project Teacher: </b></h5>
+                {child.attributes.ProjectTeacher}
+              </div>
+            </li>
+            <li className={styles.description__li}>
+              <div className={styles.description}>
+                {child.attributes.Translation}
+              </div>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default ChildPage;
+
+
+      

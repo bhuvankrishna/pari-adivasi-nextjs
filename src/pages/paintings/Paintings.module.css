@@ -49,26 +49,26 @@
     display: none;
   }
   
-  .painters-description {
+  .paintersDescription {
     padding: 4.5em;
     border-left: 2px solid darkgray;
   }
   
-  .painters-description ul {
+  .paintersDescription ul {
     display: flex;
     flex-direction: column;
     row-gap: 0.1em;
     text-align: justify;
   }
   
-  .painters-description .description {
+  .paintersDescription .description {
     display: inline-flex;
     align-items: baseline;
     column-gap: 0.5em;
     color: Black;
   }
   
-  .painters-description li:last-child .description {
+  .paintersDescription li:last-child .description {
     display: block;
   }
   
@@ -146,16 +146,16 @@
       padding: 0 !important;
     }
   
-    .painters-image {
+    .paintersImage {
       max-height: 70vh;
       width: 100%;
     }
   
-    .painters-image img {
+    .paintersImage img {
       width: 100% !important;
     }
   
-    .painters-image {
+    .paintersImage {
       padding: 0 !important;
     }
   
@@ -164,7 +164,7 @@
       grid-template-columns: none !important;
     }
   
-    .painters-image iframe {
+    .paintersImage iframe {
       width: 100%;
     }
   
@@ -192,7 +192,96 @@
       position: absolute;
     }
   
-    .painters-description {
+    .paintersDescription {
       border-left: 0;
     }
+  }
+
+  /* Single Child Page */
+
+  .videoThumbnail {
+    position: relative;
+  }
+  
+  .videoThumbnail i {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+  
+  .imageContent {
+    display: grid;
+    grid-template-columns: 53% 45%;
+    grid-gap: 2%;
+  }
+  
+  .imageContainer {
+    font-size: 14px !important;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0.03em;
+    line-height: 1.6em;
+    background-color: white;
+  }
+  .imageContainer .imageSection {
+    padding: 2.5em;
+    width: 100%;
+    float: left;
+  }
+  .imageContainer .imageSection .mainImage img {
+    width: 100%;
+  }
+  .imageContainer .imageSection .slideImage {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .imageContainer .imageSection .slideImage a div > img {
+    width: 25%;
+  }
+  
+  .paintersDescription {
+    padding: 4.5em;
+    border-left: 2px solid darkgray;
+  }
+  
+  .paintersDescription ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    text-align: justify;
+    padding-left: 0px;
+  }
+  
+  .paintersDescription .description {
+    display: inline-flex;
+    align-items: baseline;
+    column-gap: 0.5em;
+    color: Black;
+  }
+  
+  .description__h5 {
+    font-weight: 700;
+    font-size: 14px !important;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0.03em;
+    line-height: 1.5em;
+  }
+  
+  .paintersDescription li:last-child .description {
+    display: block;
+  }
+  .description__ul {
+    padding-left: 0;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .description__ol,
+  .description__ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .description__li {
+    list-style: none;
   }
