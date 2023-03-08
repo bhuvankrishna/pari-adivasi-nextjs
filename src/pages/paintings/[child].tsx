@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import styles from './Paintings.module.css';
+import Footer from '../../components/footer';
+import Header from '../../components/header';
 
 interface Child {
   
@@ -76,8 +78,12 @@ function ChildPage({child, error}:ChildObjectPropsType) {
 
   return (
     <div>
+      <Header></Header>
       <div className={styles.imageContainer}>
         <div className={styles.imageContent}>
+
+          {/* Image and Video section */}
+          
           <div className={styles.imageSection}>
             <div className={styles.mainImage}>
               <img
@@ -96,6 +102,9 @@ function ChildPage({child, error}:ChildObjectPropsType) {
               </div>
             </div>
           </div>
+
+          {/* Description section */}
+
           <div className={styles.paintersDescription}>
             <ul className={styles.description__ul}>
             <li className={styles.description__li}>
@@ -173,6 +182,7 @@ function ChildPage({child, error}:ChildObjectPropsType) {
         </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
