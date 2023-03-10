@@ -56,12 +56,14 @@ function Paintings({ child }: Props) {
               </Link>
 
             </div>
-            <a>
+            <Link href={`/paintings/${item.id}`}>
               <img 
                 className={styles.paintingsPainterImg} 
                 src={BASE_URL+item.attributes.ChildPhoto.data.attributes.formats.thumbnail.url}
               />
-            </a>
+            </Link>
+
+
             <div className={styles.paintingsPainterName}>
               <h2 className={styles.entryTitle}>
                 <a rel="bookmark">{item.attributes.Name}</a>
